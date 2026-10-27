@@ -14,7 +14,7 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 
-from . import config, data, features, models, optimizer, scouting, squad, style
+from . import config, data, features, models, optimizer, scouting, slides, squad, style
 from .llm_report import llm_report
 
 sns.set_theme(style="whitegrid")
@@ -201,6 +201,9 @@ Net spend: {plan['net_spend']/1e6:.1f}M EUR, wage change {plan['wage_change_week
 {md(loan, ['short_name', 'age', 'pos_group', 'overall', 'potential'])}
 """
     (config.REPORTS / "results.md").write_text(report, encoding="utf-8")
+
+    step("10. presentation & defense notes")
+    slides.build()
     print(f"\nDone. See {config.REPORTS / 'results.md'}, {config.REPORTS / 'transfer_memo.md'}, {config.FIGURES}")
 
 
